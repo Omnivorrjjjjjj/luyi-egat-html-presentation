@@ -567,6 +567,66 @@
       bottom: 62px;
       letter-spacing: -.08em;
     }
+    .split-photo-hero {
+      background: linear-gradient(125deg, #07111f 0%, #0a1726 52%, #07111f 100%) !important;
+    }
+    .split-photo-hero .slide-head {
+      width: 48%;
+      max-width: 570px;
+      margin: auto 0;
+      padding-right: 22px;
+    }
+    .split-photo-hero h1 { font-size: 52px; }
+    .split-photo-hero h2 { font-size: 18px; max-width: 540px; }
+    .split-photo-hero .hero-photo-pair {
+      position: absolute;
+      z-index: 2;
+      top: 72px;
+      right: 66px;
+      bottom: 72px;
+      width: 45%;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+    }
+    .split-photo-hero .hero-photo-pair figure {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(145, 224, 232, 0.32);
+      border-radius: 3px;
+      background: var(--navy-850);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
+    }
+    .split-photo-hero .hero-photo-pair img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(0.78) contrast(1.07) brightness(0.76);
+    }
+    .split-photo-hero .hero-photo-pair figure:first-child img { object-position: center 48%; }
+    .split-photo-hero .hero-photo-pair figure:last-child img { object-position: center 44%; }
+    .split-photo-hero .hero-photo-pair figcaption {
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      padding: 5px 8px;
+      color: var(--white);
+      background: rgba(5, 11, 19, 0.78);
+      border-left: 2px solid var(--cyan);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    .split-photo-hero .hero-index {
+      left: 62px;
+      right: auto;
+      bottom: 54px;
+      font-size: 112px;
+      z-index: 0;
+    }
 
     .cover-slide { justify-content: center !important; }
     .cover-box { width: 64%; position: relative; z-index: 2; }
@@ -721,6 +781,21 @@
     @media (max-width: 900px) {
       .footer-brand { display: none; }
       .source-toggle { left: 16px; }
+    }
+
+    @media print {
+      html,
+      body,
+      .reveal-viewport,
+      .reveal-print .pdf-page {
+        background-color: var(--navy-950) !important;
+      }
+      .reveal-print .pdf-page {
+        background-image:
+          linear-gradient(rgba(7, 17, 31, 0.90), rgba(7, 17, 31, 0.96)),
+          repeating-linear-gradient(0deg, transparent 0 47px, rgba(89, 199, 216, 0.032) 48px),
+          repeating-linear-gradient(90deg, transparent 0 47px, rgba(89, 199, 216, 0.032) 48px) !important;
+      }
     }
   </style>
 </head>
@@ -945,12 +1020,21 @@
         </div>
       </section>
 
-      <section class="section-hero photo-slide" data-chapter="03 / Manufacturing" data-background-image="images/bg-manufacturing.png" data-background-opacity="0.50" data-background-size="cover" data-source="LUYI_Equipment_List_for_Foxconn.xlsx; generated manufacturing background asset; Leonardo Rubbiani / Unsplash.">
-        <img class="photo-accent propeller" src="images/photo-propeller.jpg" alt="Aircraft propeller and engine detail">
+      <section class="section-hero split-photo-hero" data-chapter="03 / Manufacturing" data-source="LUYI_Equipment_List_for_Foxconn.xlsx; generated manufacturing background asset; Leonardo Rubbiani / Unsplash.">
         <div class="slide-head">
           <div class="eyebrow">Manufacturing capability</div>
           <h1>Precision across scale and setup complexity</h1>
           <h2>3-axis, 4-axis, 5-axis, turning, large gantry machining and controlled process handoffs.</h2>
+        </div>
+        <div class="hero-photo-pair" aria-label="Manufacturing and aerospace visuals">
+          <figure>
+            <img src="images/bg-manufacturing.png" alt="Precision manufacturing environment">
+            <figcaption>Manufacturing system / 製造系統</figcaption>
+          </figure>
+          <figure>
+            <img src="images/photo-propeller.jpg" alt="Aircraft propeller and engine detail">
+            <figcaption>Aerospace context / 航太情境</figcaption>
+          </figure>
         </div>
         <div class="hero-index">03</div>
       </section>

@@ -6,6 +6,8 @@
 
 以瀏覽器開啟 `index.html`，使用方向鍵切換投影片；按 `S` 可查看各頁資料來源。
 
+PDF 版本位於 `output/pdf/LUYI_EGAT_Bilingual_Presentation.pdf`。
+
 ## 內容
 
 - 28 頁中英雙語簡報
