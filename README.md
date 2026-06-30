@@ -6,7 +6,7 @@
 
 以瀏覽器開啟 `index.html`，使用方向鍵切換投影片；按 `S` 可查看各頁資料來源。
 
-PDF 版本位於 `output/pdf/LUYI_EGAT_Bilingual_Presentation.pdf`。
+16:9 PowerPoint 版本請從 [GitHub Releases](https://github.com/Omnivorrjjjjjj/luyi-egat-html-presentation/releases) 下載；本機輸出位於 `output/pptx/LUYI_EGAT_Bilingual_Presentation_16x9.pptx`。
 
 ## 內容
 

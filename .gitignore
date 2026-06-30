@@ -2,3 +2,4 @@
 qa/
 sources/
 tmp/
+output/pptx/*.pptx
