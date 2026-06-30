@@ -601,40 +601,71 @@
     .industrial-chapter .chapter-ruler span:nth-child(3) { border-color: var(--green); color: var(--green); }
     .industrial-chapter .hero-index { right: 68px; bottom: 116px; font-size: 176px; }
 
-    .capability-visual-slide .slide-head { margin-bottom: 14px; }
+    .capability-visual-slide .slide-head {
+      width: 46%;
+      max-width: 555px;
+      margin-bottom: 10px;
+    }
+    .capability-visual-slide h1 { font-size: 44px; line-height: 1.02; }
+    .capability-visual-slide h2 { font-size: 16px; line-height: 1.35; }
     .capability-visual-layout {
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 20px;
+      display: block;
+      width: 46%;
     }
     .capability-visual-layout .capability-stack {
       display: grid;
-      grid-template-rows: 1.15fr .85fr;
-      gap: 14px;
+      grid-template-rows: 1fr auto;
+      gap: 10px;
       min-height: 0;
     }
-    .capability-visual-layout .capability-stack .panel { padding: 16px 20px; }
+    .capability-visual-layout .capability-stack .panel { padding: 12px 16px; }
+    .capability-visual-layout .capability-stack h3 { font-size: 22px !important; }
     .capability-visual-layout .capability-stack .clean-list { margin-top: 7px; }
-    .capability-visual-layout .capability-stack .clean-list li { padding-top: 5px; padding-bottom: 5px; }
+    .capability-visual-layout .capability-stack .clean-list li { padding-top: 3px; padding-bottom: 3px; font-size: 13px; line-height: 1.3; }
+    .capability-visual-layout .capability-stack p { font-size: 13px; }
     .roadmap-date {
       display: flex;
       align-items: baseline;
       gap: 12px;
-      margin-top: 10px;
-      padding-top: 10px;
+      margin-top: 7px;
+      padding-top: 7px;
       border-top: 1px solid var(--line);
     }
-    .roadmap-date strong { color: var(--white); font-size: 36px; line-height: 1; letter-spacing: -.03em; }
+    .roadmap-date strong { color: var(--white); font-size: 30px; line-height: 1; letter-spacing: -.03em; }
     .roadmap-date span { color: var(--green); font-size: 14px; font-weight: 720; }
     .standalone-photo {
-      position: relative;
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50%;
       margin: 0;
       min-height: 0;
       overflow: hidden;
-      border: 1px solid rgba(145,224,232,.30);
-      border-radius: 3px;
+      border: 0;
+      border-left: 1px solid rgba(145,224,232,.34);
       background: var(--navy-850);
-      box-shadow: 0 18px 34px rgba(0,0,0,.24);
+      box-shadow: -24px 0 48px rgba(0,0,0,.26);
+    }
+    .standalone-photo::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,17,31,.72) 0%, transparent 24%),
+        linear-gradient(180deg, rgba(89,199,216,.10), transparent 38%, rgba(5,11,19,.32));
+      pointer-events: none;
+    }
+    .standalone-photo::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent 0 7px, rgba(145,224,232,.035) 8px);
+      mix-blend-mode: screen;
+      pointer-events: none;
     }
     .standalone-photo img {
       width: 100%;
@@ -657,10 +688,26 @@
       font-weight: 700;
       letter-spacing: .09em;
       text-transform: uppercase;
+      z-index: 2;
     }
 
     .product-photo-hero {
-      background: linear-gradient(125deg, #07111f 0%, #0a1726 54%, #07111f 100%) !important;
+      background:
+        radial-gradient(circle at 73% 48%, rgba(89,199,216,.11), transparent 38%),
+        linear-gradient(125deg, #07111f 0%, #0a1726 54%, #07111f 100%) !important;
+    }
+    .product-photo-hero .evidence-atmosphere {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .18;
+      filter: grayscale(1) contrast(1.22) brightness(.52);
+      mix-blend-mode: screen;
+      -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.72) 48%, transparent 78%);
+      mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.72) 48%, transparent 78%);
     }
     .product-photo-hero .slide-head {
       width: 50%;
@@ -672,15 +719,36 @@
     .product-photo-hero .single-hero-photo {
       position: absolute;
       z-index: 2;
-      top: 68px;
-      right: 66px;
-      bottom: 68px;
-      width: 43%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50%;
       margin: 0;
       overflow: hidden;
-      border: 1px solid rgba(145,224,232,.30);
-      border-radius: 3px;
-      box-shadow: 0 18px 34px rgba(0,0,0,.26);
+      border: 0;
+      clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+      box-shadow: -26px 0 60px rgba(0,0,0,.34);
+    }
+    .product-photo-hero .single-hero-photo::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,17,31,.76) 0%, transparent 24%),
+        linear-gradient(135deg, rgba(89,199,216,.22), transparent 38%, rgba(5,11,19,.30));
+      pointer-events: none;
+    }
+    .product-photo-hero .single-hero-photo::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 8px, rgba(145,224,232,.04) 9px),
+        linear-gradient(90deg, transparent 49.8%, rgba(145,224,232,.12) 50%, transparent 50.2%);
+      mix-blend-mode: screen;
+      pointer-events: none;
     }
     .product-photo-hero .single-hero-photo img {
       width: 100%;
@@ -690,7 +758,44 @@
       object-position: center 44%;
       filter: saturate(.74) contrast(1.08) brightness(.72);
     }
-    .product-photo-hero .hero-index { left: 62px; right: auto; bottom: 54px; font-size: 112px; z-index: 0; }
+    .product-photo-hero .single-hero-photo figcaption { left: 52px; bottom: 52px; }
+    .product-photo-hero .hero-index { left: 62px; right: auto; bottom: 54px; font-size: 112px; z-index: 1; }
+
+    .reference-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      height: 100%;
+    }
+    .reference-card {
+      display: grid;
+      grid-template-rows: 190px 1fr;
+      min-height: 0;
+      overflow: hidden;
+      background: linear-gradient(150deg, rgba(20,43,62,.78), rgba(8,21,36,.88));
+      border: 1px solid var(--line);
+      border-top: 2px solid var(--green);
+    }
+    .reference-card.non-aero { border-top-color: var(--amber); }
+    .reference-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      height: 190px;
+      min-height: 0;
+      overflow: hidden;
+      background: #edf2f3;
+    }
+    .reference-images img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .reference-card-copy { position: relative; z-index: 2; padding: 13px 15px 14px; min-height: 0; background: #0a1726; }
+    .reference-card-copy h3 { margin: 0 0 7px; font-size: 18px; }
+    .reference-card-copy p { color: var(--steel); font-size: 12px; line-height: 1.42; }
+    .reference-card-copy .evidence-kicker { margin-bottom: 5px; font-size: 9px; }
 
     .cover-slide { justify-content: center !important; }
     .cover-box { width: 64%; position: relative; z-index: 2; }
@@ -881,36 +986,36 @@
 
       <section class="icon-showcase" data-chapter="01 / Strategic Fit" data-source="LUYI_EGAT_intro_briefing_v2.pdf pp.2-4; PROJECT_BRIEF.md.">
         <div class="slide-head">
-          <div class="eyebrow">Executive thesis</div>
-          <h1>Why LUYI merits one controlled trial</h1>
-          <h2>Three conditions align: technical fit, quality fit and a low-risk commercial entry path.</h2>
+          <div class="eyebrow">Supplier qualification proposal</div>
+          <h1>A controlled path to qualify LUYI</h1>
+          <h2>Manufacturing capability, quality discipline and clear governance are ready for an EGAT trial.</h2>
         </div>
         <div class="content grid-3">
           <div class="panel icon-card">
             <img src="images/icon-machining.png" alt="Precision machining icon">
-            <h3>Technical fit</h3>
+            <h3>Manufacturing capability</h3>
             <p>High-mix precision CNC, large-envelope machining, 5-axis execution and complex aluminum experience.</p>
           </div>
           <div class="panel icon-card">
             <img src="images/icon-quality.png" alt="Quality system icon">
-            <h3>Quality fit</h3>
+            <h3>Quality assurance</h3>
             <p>AS9100:D and ISO 9001:2015 foundation, documented controls, metrology and FAI discipline.</p>
           </div>
           <div class="panel icon-card">
             <img src="images/icon-partnership.png" alt="Controlled partnership icon">
-            <h3>Business fit</h3>
-            <p>One bounded pilot part lets EGAT evaluate evidence and responsiveness before expanding supplier scope.</p>
+            <h3>Low-risk entry</h3>
+            <p>A defined pilot part allows EGAT to review execution, evidence and response time before expanding scope.</p>
           </div>
         </div>
-        <div class="callout">Position LUYI as an auditable precision-manufacturing partner—not as a commodity machine shop.</div>
+        <div class="callout">LUYI proposes an auditable trial built around part quality, traceability and communication.</div>
       </section>
 
       <section class="photo-slide" data-chapter="01 / Strategic Fit" data-source="EGAT 2025 annual report references summarized in LUYI_EGAT_intro_briefing_v2.pdf p.3; V2 source notes; Tolga Ahmetler / Unsplash.">
         <img class="photo-accent wing" src="images/photo-wing-clouds.jpg" alt="Aircraft wing above clouds">
         <div class="slide-head">
-          <div class="eyebrow">Why EGAT · Why now</div>
-          <h1>A practical opening in EGAT's manufacturing flow</h1>
-          <h2>Public disclosures connect aircraft-component work with machining, aluminum processing and controlled special processes.</h2>
+          <div class="eyebrow">Where LUYI can support EGAT</div>
+          <h1>Supporting controlled aerospace manufacturing workflows</h1>
+          <h2>LUYI's machining, aluminum-processing and supplier-control experience can support defined aircraft-component work packages.</h2>
         </div>
         <div class="content split-55">
           <div class="panel green-line">
@@ -926,13 +1031,13 @@
           <div>
             <div class="metric">
               <div><span class="number">01</span><span class="unit">part</span></div>
-              <div class="label">A bounded entry point for supplier qualification</div>
+              <div class="label">A practical starting point for supplier qualification</div>
             </div>
             <div class="metric">
               <div><span class="number">30</span><span class="unit">days</span></div>
               <div class="label">Proposed governance window, subject to part complexity</div>
             </div>
-            <div class="callout caution small">The proposal is not immediate production approval. It is a controlled test of machining, evidence and communication.</div>
+            <div class="callout caution small">The trial confirms machining results, documentation quality and communication before any broader production scope.</div>
           </div>
         </div>
       </section>
@@ -940,14 +1045,14 @@
       <section data-chapter="01 / Strategic Fit" data-source="LUYI_EGAT_intro_briefing_v2.pdf p.4; PROJECT_BRIEF.md.">
         <div class="slide-head">
           <div class="eyebrow">Collaboration positioning</div>
-          <h1>Move the evaluation standard—from price to evidence</h1>
-          <h2>Drag the control to compare the two supplier propositions.</h2>
+          <h1>Evaluate supplier readiness through evidence</h1>
+          <h2>Compare a price-led machining offer with a controlled aerospace trial.</h2>
         </div>
         <div class="content">
           <div class="viz-shell" id="position-viz">
             <div class="viz-layer viz-before">
               <div class="viz-side">
-                <div class="viz-block"><div class="evidence-kicker danger">Generic supplier</div><h3>Machine the drawing</h3><p>Capability described mainly by equipment and price.</p></div>
+                <div class="viz-block"><div class="evidence-kicker danger">Price-led supplier</div><h3>Machine the drawing</h3><p>Capability described mainly by equipment and price.</p></div>
                 <div class="viz-points"><div class="viz-point">One-off emergency work</div><div class="viz-point">Limited document linkage</div><div class="viz-point">Unclear process ownership</div><div class="viz-point">Inspection after the fact</div></div>
               </div>
             </div>
@@ -960,7 +1065,7 @@
             <div class="viz-divider" id="position-divider"></div>
           </div>
           <input class="viz-range" id="position-slider" type="range" min="0" max="100" value="52" aria-label="Compare generic supplier with controlled aerospace partner">
-          <div class="viz-labels"><span>Commodity machining</span><span>Controlled aerospace trial</span></div>
+          <div class="viz-labels"><span>Price-led machining</span><span>Controlled aerospace trial</span></div>
         </div>
       </section>
 
@@ -986,11 +1091,11 @@
               <li>Aerospace and semiconductor equipment</li>
               <li>Large-format and advanced 5-axis capability</li>
               <li>Stronger metrology and document control</li>
-              <li>Higher-value parts over commodity volume</li>
+              <li>Focus on precision, high-value components</li>
             </ul>
           </div>
         </div>
-        <div class="callout small">Formal company name for customer-facing material: <strong>LUYI Enterprise Co., Ltd.</strong></div>
+        <div class="callout small">Contracting entity: <strong>LUYI Enterprise Co., Ltd. / 陸謚企業股份有限公司</strong></div>
       </section>
 
       <section data-chapter="02 / Quality Foundation" data-source="AFNOR AS9100:D certificate; AFNOR ISO 9001:2015 certificate; 2024 Greenhouse Gas Emissions Verification Opinion under ISO 14064-1:2018; management update for ISO 27001 roadmap.">
@@ -1004,7 +1109,7 @@
           <div class="cert-paper"><img src="images/cert-iso9001.png" alt="AFNOR ISO 9001 certificate"></div>
           <div class="cert-paper"><img src="images/verification-iso14064-1.png" alt="ISO 14064-1 greenhouse gas verification opinion"></div>
           <div class="panel green-line cert-summary">
-            <h3>Evidence status</h3>
+            <h3>Certification and roadmap</h3>
             <div class="spec-list">
               <div class="spec-row"><b>AS9100</b><span>AS9100:D / JISQ 9100:2016 / EN 9100:2018</span></div>
               <div class="spec-row"><b>ISO 9001</b><span>ISO 9001:2015 · valid through 2028-05-03</span></div>
@@ -1019,15 +1124,15 @@
       <section data-chapter="02 / Quality Foundation" data-source="LUYI_EGAT_intro_briefing_v2.pdf p.7; luyi_bd_ppt/SKILL.md.">
         <div class="slide-head">
           <div class="eyebrow">Quality-system alignment</div>
-          <h1>The controls EGAT should expect to see</h1>
-          <h2>Translate certification into observable supplier behavior.</h2>
+          <h1>Controls prepared for EGAT review</h1>
+          <h2>Certification is supported by operating controls that can be reviewed at project level.</h2>
         </div>
         <div class="content grid-3">
           <div class="panel"><h3>Before release</h3><ul class="clean-list"><li>Contract / PO review</li><li>Drawing revision control</li><li>Material and lot requirements</li></ul></div>
           <div class="panel green-line"><h3>During execution</h3><ul class="clean-list"><li>Process route / traveler</li><li>In-process inspection</li><li>Controlled external flow-down</li></ul></div>
           <div class="panel"><h3>After machining</h3><ul class="clean-list"><li>FAI / inspection evidence</li><li>NCR / CAPA linkage</li><li>Change control before repeat</li></ul></div>
         </div>
-        <div class="callout risk small"><strong>Claim boundary:</strong> LUYI does not claim FAA certification. EGAT requirements would be supported through an AS9100-based quality system and project-specific flow-down.</div>
+        <div class="callout risk small"><strong>Scope note:</strong> LUYI is AS9100:D certified. FAA certification is not claimed; project requirements will be managed through the quality system and customer flow-down.</div>
       </section>
 
       <section data-chapter="02 / Quality Foundation" data-source="LUYI_EGAT_intro_briefing_v2.pdf p.8.">
@@ -1045,7 +1150,7 @@
           <div class="org-node"><b>Document / IT</b><span>Version, controlled records, data security</span></div>
           <div class="org-node"><b>ADM / Business</b><span>Customer communication, quote, escalation</span></div>
         </div>
-        <div class="callout small">Proposed trial-phase commitment: respond to commercial or technical clarification within 24 hours.</div>
+        <div class="callout small">Trial-phase service target: commercial and technical clarifications answered within 24 hours.</div>
       </section>
 
       <section data-chapter="02 / Quality Foundation" data-source="LUYI_EGAT_intro_briefing_v2.pdf p.9.">
@@ -1110,14 +1215,14 @@
           <div class="panel icon-card green-line"><img src="images/icon-gantry.png" alt="Large gantry machining"><div class="metric"><span class="number">3</span></div><h3>Large / 5-axis machines</h3><p>WELE, Ecom and APEC large-envelope capability.</p></div>
           <div class="panel icon-card"><img src="images/icon-metrology.png" alt="Metrology"><div class="metric"><span class="number">1+1+36</span></div><h3>Metrology base</h3><p>CMM, Keyence 2.5D and standard measuring tools.</p></div>
         </div>
-        <div class="callout caution small">Laser welding, vacuum brazing and skiving-fin resources are controlled partner capabilities—not LUYI-owned equipment.</div>
+        <div class="callout caution small">Laser welding, vacuum brazing and skiving-fin processes are available through qualified external partners under controlled supplier management.</div>
       </section>
 
       <section data-chapter="03 / Manufacturing" data-source="LUYI_Equipment_List_for_Foxconn.xlsx sheet CNC_Internal rows 2-14.">
         <div class="slide-head">
           <div class="eyebrow">Renhua plant matrix</div>
           <h1>Four equipment clusters; one 14-machine base</h1>
-          <h2>A simplified executive view of the detailed equipment workbook.</h2>
+          <h2>Four equipment clusters summarize current machining capacity.</h2>
         </div>
         <div class="content">
           <table class="industrial-table">
@@ -1129,7 +1234,7 @@
               <tr><td><strong>YCM turning</strong></td><td>GT200A</td><td class="status">1</td><td>Ø260 mm max turn · 360 mm length</td><td>Shafts, round parts, fittings and connectors</td></tr>
             </tbody>
           </table>
-          <div class="callout caution small" style="margin-top:18px;">Public OEM specifications in the working file remain reference data; final installed configurations should be checked by machine nameplate or site survey when required.</div>
+          <div class="callout caution small" style="margin-top:18px;">Published machine specifications are reference values; installed configurations can be confirmed during site review.</div>
         </div>
       </section>
 
@@ -1158,29 +1263,29 @@
 
       <section class="capability-visual-slide" data-chapter="03 / Manufacturing" data-source="LUYI_EGAT_intro_briefing_v2.pdf p.15; management update: ISO 27001 consultant-led implementation with audit planned for 2027 H2; generated manufacturing visual.">
         <div class="slide-head">
-          <div class="eyebrow">Capability expansion</div>
-          <h1>Investment supports the post-trial roadmap</h1>
-          <h2>Future capability is disclosed as onboarding—not presented as current production capacity.</h2>
+          <div class="eyebrow">Planned capability</div>
+          <h1>Investment aligned with future program needs</h1>
+          <h2>Mikron 5-axis capacity and ISO 27001 implementation are scheduled as defined capability milestones.</h2>
         </div>
         <div class="content capability-visual-layout">
           <div class="capability-stack">
             <div class="panel green-line">
-              <div class="evidence-kicker">Contracted / onboarding</div>
+              <div class="evidence-kicker">Equipment onboarding</div>
               <h3 style="font-size:27px;">Mikron MILL E 1900 U ST</h3>
               <ul class="clean-list"><li>Advanced 5-axis capability expansion</li><li>Higher technical-content aerospace and semiconductor work</li><li>Fewer setups for complex geometries</li></ul>
             </div>
             <div class="panel">
               <div class="evidence-kicker amber">Data-security roadmap</div>
               <h3 style="font-size:25px;">ISO 27001</h3>
-              <p style="margin-top:8px;">Under advisory / implementation.</p>
+              <p style="margin-top:8px;">Consultant-led implementation in progress.</p>
               <div class="roadmap-date"><strong>2027 H2</strong><span>Audit planned / 預計稽核</span></div>
             </div>
           </div>
-          <figure class="standalone-photo">
-            <img src="images/bg-manufacturing.png" alt="Precision manufacturing environment">
-            <figcaption>Manufacturing investment / 製造投資</figcaption>
-          </figure>
         </div>
+        <figure class="standalone-photo">
+          <img src="images/bg-manufacturing.png" alt="Precision manufacturing environment">
+          <figcaption>Manufacturing investment / 製造投資</figcaption>
+        </figure>
       </section>
 
       <section data-chapter="04 / Metrology &amp; Evidence" data-source="LUYI_Equipment_List_for_Foxconn.xlsx sheet Inspection; LUYI_EGAT_intro_briefing_v2.pdf p.16.">
@@ -1199,7 +1304,7 @@
             <ul class="clean-list"><li>Equipment ID and serial number</li><li>Measuring range and responsible owner</li><li>Calibration date and report number</li><li>Annual calibration policy</li><li>History available for qualification review</li></ul>
           </div>
         </div>
-        <div class="callout risk small"><strong>Open verification:</strong> confirm the latest external CMM calibration certificate before a formal supplier audit.</div>
+        <div class="callout risk small">The latest external CMM calibration certificate will be available for supplier qualification review.</div>
       </section>
 
       <section data-chapter="04 / Metrology &amp; Evidence" data-source="LUYI_Equipment_List_for_Foxconn.xlsx sheet Inspection. Model strings follow workbook data; final nameplate confirmation remains open.">
@@ -1218,8 +1323,8 @@
             </tbody>
           </table>
           <div class="grid-2" style="margin-top:22px;">
-            <div class="panel"><h3>What the list supports</h3><p>Defined equipment, quantity, intended use and policy cadence.</p></div>
-            <div class="panel amber-line"><h3>What still requires evidence</h3><p>Latest certificates, equipment history and final installed model confirmation.</p></div>
+            <div class="panel"><h3>Available equipment information</h3><p>Defined equipment, quantity, intended use and policy cadence.</p></div>
+            <div class="panel amber-line"><h3>Qualification review package</h3><p>Latest certificates, equipment history and installed-model confirmation can be provided during qualification review.</p></div>
           </div>
         </div>
       </section>
@@ -1236,7 +1341,7 @@
             <div>
               <div class="panel green-line"><h3>What the sample shows</h3><ul class="clean-list"><li>Characteristic numbering</li><li>Requirement versus actual result</li><li>Inspection-tool reference</li><li>Nonconformance field</li><li>Prepared-by and date control</li></ul></div>
             </div>
-            <div class="callout risk small"><strong>Claim boundary:</strong> implemented AS/EN/SJAC9102 Rev A Form 3-style records. A full Form 1 / 2 / 3 FAIR package must be confirmed by project scope and customer requirement.</div>
+            <div class="callout risk small"><strong>FAI scope:</strong> Form 3-style records are implemented. Form 1 / 2 / 3 FAIR content will follow the agreed project and customer requirements.</div>
           </div>
         </div>
       </section>
@@ -1257,21 +1362,22 @@
       <section data-chapter="04 / Metrology &amp; Evidence" data-source="LUYI_EGAT_intro_briefing_v2.pdf p.20; product-source documents.">
         <div class="slide-head">
           <div class="eyebrow">Material capability</div>
-          <h1>Separate proven evidence from development targets</h1>
-          <h2>Credibility improves when each material claim carries the right confidence level.</h2>
+          <h1>Current material capability and planned development</h1>
+          <h2>Each material is presented with its supporting evidence and qualification status.</h2>
         </div>
         <div class="content grid-3">
           <div class="panel green-line"><div class="evidence-kicker">Evidence available</div><h3>Current references</h3><ul class="clean-list"><li>AC4A</li><li>6061 / 6061-T6</li><li>7075-T6</li><li>ADC12 · non-aerospace</li><li>FC200 · non-aerospace</li></ul></div>
-          <div class="panel"><div class="evidence-kicker cyan">General capability</div><h3>Record-dependent</h3><ul class="clean-list"><li>Steel</li><li>Stainless steel</li><li>Copper alloys</li><li>Engineering plastics</li></ul><p class="small" style="margin-top:10px;">List only where internal process records support the claim.</p></div>
-          <div class="panel danger-line"><div class="evidence-kicker danger">Do not lead</div><h3>Development targets</h3><ul class="clean-list"><li>Titanium alloys</li><li>Nickel-based alloys</li><li>Aerospace qualification without records</li></ul><p class="small" style="margin-top:10px;">Avoid self-inflicted audit risk.</p></div>
+          <div class="panel"><div class="evidence-kicker cyan">General capability</div><h3>Available with process records</h3><ul class="clean-list"><li>Steel</li><li>Stainless steel</li><li>Copper alloys</li><li>Engineering plastics</li></ul><p class="small" style="margin-top:10px;">Material capability will be supported by the applicable process records.</p></div>
+          <div class="panel danger-line"><div class="evidence-kicker danger">Planned development</div><h3>Future material capability</h3><ul class="clean-list"><li>Titanium alloys</li><li>Nickel-based alloys</li><li>Additional aerospace material qualification</li></ul><p class="small" style="margin-top:10px;">Additional materials will be introduced after the required process evidence is established.</p></div>
         </div>
       </section>
 
       <section class="section-hero product-photo-hero" data-chapter="05 / Product Evidence" data-source="Product source documents and visuals; Leonardo Rubbiani / Unsplash.">
+        <img class="evidence-atmosphere" src="images/bg-evidence.png" alt="">
         <div class="slide-head">
-          <div class="eyebrow">Product evidence strategy</div>
-          <h1>Show what each reference actually proves</h1>
-          <h2>Material + process + critical feature + inspection method + relevance to EGAT.</h2>
+          <div class="eyebrow">Manufacturing reference framework</div>
+          <h1>Reference evidence linked to manufacturing capability</h1>
+          <h2>Each reference connects material, process, critical features and inspection methods to the proposed EGAT trial.</h2>
         </div>
         <figure class="single-hero-photo">
           <img src="images/photo-propeller.jpg" alt="Aircraft propeller and engine detail">
@@ -1374,28 +1480,23 @@
 
       <section data-chapter="05 / Product Evidence" data-source="Precision 6061 panel source; FC200 process drawing; ADC12 process drawing; mapped visual renders. Internal identifiers are omitted from customer-facing labels.">
         <div class="slide-head">
-          <div class="eyebrow">Additional process evidence</div>
-          <h1>Three references; three distinct claim levels</h1>
-          <h2>Select a tab to inspect the technical evidence. Non-aerospace examples remain explicitly labeled.</h2>
+          <div class="eyebrow">Additional manufacturing references</div>
+          <h1>Additional manufacturing references</h1>
+          <h2>Each example is labeled by material, process and aerospace relevance.</h2>
         </div>
-        <div class="content">
-          <div class="evidence-tabs" role="tablist" aria-label="Additional process references">
-            <button class="evidence-tab active" data-tab="panel-6061" role="tab">6061 PANEL</button>
-            <button class="evidence-tab" data-tab="panel-fc200" role="tab">FC200 · NON-AEROSPACE</button>
-            <button class="evidence-tab" data-tab="panel-adc12" role="tab">ADC12 · NON-AEROSPACE</button>
-          </div>
-          <div class="tab-panel active" id="panel-6061">
-            <div class="image-frame crop"><img src="images/ref-6061-panel-1.png" alt="Precision 6061 aluminum structural panel"></div>
-            <div class="panel green-line"><div class="evidence-kicker">Precision structural reference</div><h3>6061 aluminum panel</h3><div class="spec-list"><div class="spec-row"><b>Size</b><span>678 × 492.5 × 22.66 mm</span></div><div class="spec-row"><b>Process</b><span>Finish milling, sandblasting, anodizing</span></div><div class="spec-row"><b>Features</b><span>Hole-to-hole 0.15 mm; flatness 0.1 mm</span></div></div></div>
-          </div>
-          <div class="tab-panel" id="panel-fc200">
-            <div class="image-frame crop"><img src="images/ref-fc200-1.png" alt="FC200 industrial precision process evidence"></div>
-            <div class="panel amber-line"><div class="evidence-kicker amber">Non-aerospace process evidence</div><h3>FC200 precision component</h3><div class="spec-list"><div class="spec-row"><b>Process</b><span>CNC milling, drilling and inspection</span></div><div class="spec-row"><b>Features</b><span>Ø16H7, flatness 0.2/100</span></div><div class="spec-row"><b>Inspection</b><span>Inspection bar, feeler gauge, datum surfaces</span></div></div></div>
-          </div>
-          <div class="tab-panel" id="panel-adc12">
-            <div class="image-frame crop"><img src="images/ref-adc12-1.png" alt="ADC12 die-cast secondary machining evidence"></div>
-            <div class="panel amber-line"><div class="evidence-kicker amber">Non-aerospace process evidence</div><h3>ADC12 secondary machining</h3><div class="spec-list"><div class="spec-row"><b>Process</b><span>Leveling, grinding, CNC milling, cleaning, inspection</span></div><div class="spec-row"><b>Features</b><span>11.5 +0.05/+0.01; flatness / parallelism checks</span></div><div class="spec-row"><b>Inspection</b><span>Dedicated plug gauge, caliper, height gauge</span></div></div></div>
-          </div>
+        <div class="content reference-gallery">
+          <article class="reference-card">
+            <div class="reference-images"><img src="images/ref-6061-panel-1.png" alt="6061 aluminum panel overview"><img src="images/ref-6061-panel-2.png" alt="6061 aluminum panel detail"></div>
+            <div class="reference-card-copy"><div class="evidence-kicker">Aerospace-relevant process reference</div><h3>6061 aluminum panel</h3><p>Finish milling, sandblasting and anodizing; dimensional evidence includes hole-to-hole and flatness control.</p></div>
+          </article>
+          <article class="reference-card non-aero">
+            <div class="reference-images"><img src="images/ref-fc200-1.png" alt="FC200 precision component overview"><img src="images/ref-fc200-2.png" alt="FC200 precision component detail"></div>
+            <div class="reference-card-copy"><div class="evidence-kicker amber">Non-aerospace process reference</div><h3>FC200 precision component</h3><p>CNC milling, drilling and inspection evidence for bore tolerance, flatness and datum-based verification.</p></div>
+          </article>
+          <article class="reference-card non-aero">
+            <div class="reference-images"><img src="images/ref-adc12-1.png" alt="ADC12 machining overview"><img src="images/ref-adc12-2.png" alt="ADC12 machining detail"></div>
+            <div class="reference-card-copy"><div class="evidence-kicker amber">Non-aerospace process reference</div><h3>ADC12 secondary machining</h3><p>Leveling, grinding, CNC milling and inspection evidence for thickness, flatness and parallelism control.</p></div>
+          </article>
         </div>
       </section>
 
@@ -1428,14 +1529,14 @@
         <img class="photo-accent paper" src="images/photo-paper-plane.jpg" alt="Hand holding a paper airplane">
         <div class="content end-ask">
           <div>
-            <div class="eyebrow">Request for controlled trial</div>
-            <h1 style="font-size:58px;">Give LUYI one part.<br><span class="cyan">Judge the evidence.</span></h1>
+            <div class="eyebrow">Proposed starting scope</div>
+            <h1 style="font-size:58px;">Start with one controlled part.<br><span class="cyan">Review the evidence.</span></h1>
             <p class="ask-line">A precision-machined component with formal drawing, material specification, inspection requirements and acceptance criteria.</p>
           </div>
           <div class="panel green-line">
             <h3>Recommended starting families</h3>
             <ul class="clean-list"><li>Bracket, support or fitting</li><li>Base plate, structural plate or panel</li><li>Housing, cover or enclosure</li><li>Flange or ring-type structure</li><li>Manifold / valve block with clear inspection criteria</li><li>Controlled MRO support mechanical part</li></ul>
-            <div class="callout risk small" style="margin-top:15px;">Do not lead with primary flight-critical, rotating, landing-gear critical or hot-section engine parts.</div>
+            <div class="callout risk small" style="margin-top:15px;">Recommended first scope excludes primary flight-critical, rotating, landing-gear critical and hot-section engine parts.</div>
           </div>
         </div>
       </section>
@@ -1729,7 +1830,65 @@
       ["Flange or ring-type structure", "法蘭或環形結構"],
       ["Manifold / valve block with clear inspection criteria", "具明確檢驗標準的歧管／閥塊"],
       ["Controlled MRO support mechanical part", "受控 MRO 支援機械零件"],
-      ["Do not lead with primary flight-critical, rotating, landing-gear critical or hot-section engine parts.", "不以主要飛安關鍵件、旋轉件、起落架關鍵件或引擎熱段零件作為首案。"]
+      ["Do not lead with primary flight-critical, rotating, landing-gear critical or hot-section engine parts.", "不以主要飛安關鍵件、旋轉件、起落架關鍵件或引擎熱段零件作為首案。"],
+
+      ["Supplier qualification proposal", "供應商資格提案"],
+      ["A controlled path to qualify LUYI", "以受控試製完成 LUYI 供應商資格評估"],
+      ["Manufacturing capability, quality discipline and clear governance are ready for an EGAT trial.", "製造能力、品質紀律與治理流程已可支援 EGAT 試製評估。"],
+      ["Quality assurance", "品質保證"],
+      ["Low-risk entry", "低風險導入"],
+      ["A defined pilot part allows EGAT to review execution, evidence and response time before expanding scope.", "以明確的試製件，讓 EGAT 在擴大合作前檢視執行成果、證據與回應效率。"],
+      ["LUYI proposes an auditable trial built around part quality, traceability and communication.", "LUYI 建議以零件品質、追溯與溝通為核心，執行可稽核的試製合作。"],
+      ["Where LUYI can support EGAT", "LUYI 可支援 EGAT 的環節"],
+      ["Supporting controlled aerospace manufacturing workflows", "支援受控的航太製造流程"],
+      ["LUYI's machining, aluminum-processing and supplier-control experience can support defined aircraft-component work packages.", "LUYI 的加工、鋁材製程與供應商管制經驗，可支援明確定義的航空零組件工作包。"],
+      ["A practical starting point for supplier qualification", "供應商資格評估的務實起點"],
+      ["The trial confirms machining results, documentation quality and communication before any broader production scope.", "在擴大生產範圍前，以試製確認加工成果、文件品質與溝通效率。"],
+      ["Evaluate supplier readiness through evidence", "以證據評估供應商成熟度"],
+      ["Compare a price-led machining offer with a controlled aerospace trial.", "比較以價格為主的加工方案與受控航太試製方案。"],
+      ["Price-led supplier", "價格導向供應商"],
+      ["Price-led machining", "價格導向加工"],
+      ["Focus on precision, high-value components", "聚焦精密與高價值零組件"],
+      ["Controls prepared for EGAT review", "已備妥供 EGAT 審查的管制機制"],
+      ["Certification is supported by operating controls that can be reviewed at project level.", "認證基礎已落實為可於專案層級審查的作業管制。"],
+      ["Scope note: LUYI is AS9100:D certified. FAA certification is not claimed; project requirements will be managed through the quality system and customer flow-down.", "範圍說明：LUYI 已取得 AS9100:D 認證；未宣稱 FAA 認證，專案要求將透過品質系統與客戶要求下達進行管理。"],
+      ["Trial-phase service target: commercial and technical clarifications answered within 24 hours.", "試製階段服務目標：商務與技術澄清於 24 小時內回覆。"],
+      ["Published machine specifications are reference values; installed configurations can be confirmed during site review.", "公開機台規格為參考值，實際配置可於現場審查時確認。"],
+      ["Planned capability", "規劃中能力"],
+      ["Investment aligned with future program needs", "投資規劃對接未來專案需求"],
+      ["Mikron 5-axis capacity and ISO 27001 implementation are scheduled as defined capability milestones.", "Mikron 五軸產能與 ISO 27001 導入已列為明確的能力里程碑。"],
+      ["Equipment onboarding", "設備導入中"],
+      ["Consultant-led implementation in progress.", "顧問輔導與導入作業進行中。"],
+      ["The latest external CMM calibration certificate will be available for supplier qualification review.", "最新外部 CMM 校正證書將於供應商資格審查時提供。"],
+      ["Qualification review package", "資格審查資料包"],
+      ["Latest certificates, equipment history and installed-model confirmation can be provided during qualification review.", "最新證書、設備歷程與實際安裝型號，可於資格審查時提供。"],
+      ["FAI scope: Form 3-style records are implemented. Form 1 / 2 / 3 FAIR content will follow the agreed project and customer requirements.", "FAI 範圍：已導入 Form 3 型式紀錄；Form 1／2／3 FAIR 內容將依雙方確認的專案與客戶要求執行。"],
+      ["Current material capability and planned development", "現有材料能力與後續發展規劃"],
+      ["Each material is presented with its supporting evidence and qualification status.", "各項材料均依其支持證據與資格狀態呈現。"],
+      ["Available with process records", "具製程紀錄時可提供"],
+      ["Material capability will be supported by the applicable process records.", "材料能力將由適用的製程紀錄支持。"],
+      ["Planned development", "規劃發展項目"],
+      ["Future material capability", "未來材料能力"],
+      ["Additional aerospace material qualification", "其他航太材料資格建立"],
+      ["Additional materials will be introduced after the required process evidence is established.", "待所需製程證據建立後，再導入其他材料能力。"],
+      ["Manufacturing reference framework", "製造案例架構"],
+      ["Reference evidence linked to manufacturing capability", "以案例證據連結製造能力"],
+      ["Each reference connects material, process, critical features and inspection methods to the proposed EGAT trial.", "各項案例均將材料、製程、關鍵特徵與檢驗方法，連結至建議的 EGAT 試製。"],
+      ["Additional manufacturing references", "其他製造案例"],
+      ["Each example is labeled by material, process and aerospace relevance.", "各項案例均標示材料、製程與航太關聯性。"],
+      ["Aerospace-relevant process reference", "具航太關聯的製程案例"],
+      ["Finish milling, sandblasting and anodizing; dimensional evidence includes hole-to-hole and flatness control.", "涵蓋精銑、噴砂與陽極處理；尺寸證據包含孔距與平面度管制。"],
+      ["Non-aerospace process reference", "非航太製程案例"],
+      ["CNC milling, drilling and inspection evidence for bore tolerance, flatness and datum-based verification.", "呈現 CNC 銑削、鑽孔與檢驗證據，涵蓋孔徑公差、平面度與基準驗證。"],
+      ["Leveling, grinding, CNC milling and inspection evidence for thickness, flatness and parallelism control.", "呈現整平、研磨、CNC 銑削與檢驗證據，涵蓋厚度、平面度與平行度管制。"],
+      ["Proposed starting scope", "建議起始範圍"],
+      ["Start with one controlled part.Review the evidence.", "從一項受控零件開始，以證據共同審查成果。"],
+      ["Recommended first scope excludes primary flight-critical, rotating, landing-gear critical and hot-section engine parts.", "建議首案不納入主要飛安關鍵件、旋轉件、起落架關鍵件與引擎熱段零件。"]
+      ,["Contracting entity: LUYI Enterprise Co., Ltd. / 陸謚企業股份有限公司", "簽約主體：LUYI Enterprise Co., Ltd.／陸謚企業股份有限公司"]
+      ,["Certification and roadmap", "認證與導入路線"]
+      ,["Laser welding, vacuum brazing and skiving-fin processes are available through qualified external partners under controlled supplier management.", "雷射焊接、真空釬焊與鏟齒散熱片製程，可透過合格外部夥伴並依受控供應商管理提供。"]
+      ,["Four equipment clusters summarize current machining capacity.", "四大設備群呈現目前加工產能。"]
+      ,["Available equipment information", "可提供的設備資訊"]
     ]);
 
     document.querySelectorAll([
